@@ -3,86 +3,74 @@ import { useState } from "react";
 import { Mail, Linkedin } from "lucide-react";
 import { motion } from "framer-motion";
 
+/* --------------------------------------------------
+ * Dil / metin sözlüğü
+ * -------------------------------------------------*/
 const translations = {
   nav: {
     tr: ["hakkimda", "deneyim", "yetenekler", "iletisim"],
-    en: ["about", "experience", "skills", "contact"]
+    en: ["about", "experience", "skills", "contact"],
   },
   heroTitle: {
-    tr: "Cloud & DevOps Mühendisi",
-    en: "Cloud & DevOps Engineer"
+    tr: "Cloud & DevOps Mühendisi",
+    en: "Cloud & DevOps Engineer",
   },
   heroDesc: {
     tr: "Kubernetes ve OpenShift üzerinde kurumsal platformlar; modern CI/CD hatları ve gözlemlenebilirlik çözümleri geliştiriyorum.",
-    en: "Building scalable enterprise platforms on Kubernetes and OpenShift; crafting modern CI/CD pipelines and observability solutions."
+    en: "Building scalable enterprise platforms on Kubernetes and OpenShift; crafting modern CI/CD pipelines and observability solutions.",
   },
-  contactCta: {
-    tr: "İletişime Geç",
-    en: "Get in Touch"
-  },
-  aboutTitle: {
-    tr: "Hakkımda",
-    en: "About"
-  },
+  contactCta: { tr: "İletişime Geç", en: "Get in Touch" },
+  aboutTitle: { tr: "Hakkımda", en: "About" },
   aboutText: {
     tr: "Bilgisayar Mühendisi olarak finans sektöründe Kubernetes tabanlı bulut platformlarını tasarlayıp yönettim. Açık kaynak araçlara tutkuluyum; kod kalitesi ve otomasyon vazgeçilmezim.",
-    en: "As a Computer Engineer, I designed and managed Kubernetes-based cloud platforms in the finance sector. I'm passionate about open source tools; code quality and automation are my top priorities."
+    en: "As a Computer Engineer, I designed and managed Kubernetes-based cloud platforms in the finance sector. I'm passionate about open‑source tools; code quality and automation are my top priorities.",
   },
-  expTitle: {
-    tr: "Deneyim",
-    en: "Experience"
-  },
-  skillsTitle: {
-    tr: "Yetenekler",
-    en: "Skills"
-  },
-  contactTitle: {
-    tr: "İletişim",
-    en: "Contact"
-  },
-  techLabel: {
-    tr: "Teknolojiler:",
-    en: "Technologies:"
-  }
+  expTitle: { tr: "Deneyim", en: "Experience" },
+  skillsTitle: { tr: "Yetenekler", en: "Skills" },
+  contactTitle: { tr: "İletişim", en: "Contact" },
+  techLabel: { tr: "Teknolojiler:", en: "Technologies:" },
 };
 
+/* --------------------------------------------------
+ * Veri kümeleri
+ * -------------------------------------------------*/
 const experience = [
   {
     company: "Odeabank",
-    title: "Expert Cloud & DevOps Engineer",
-    period: { tr: "Haz 2023 – Günümüz", en: "Jun 2023 – Present" },
-    stack: "OpenShift, Anthos, Vanilla K8S, Docker, ELK, GitLab, Prometheus"
+    title: "Expert Cloud & DevOps Engineer",
+    period: { tr: "Haz 2023 – Günümüz", en: "Jun 2023 – Present" },
+    stack: "OpenShift, Anthos, Vanilla K8S, Docker, ELK, GitLab, Prometheus",
   },
   {
-    company: "Yapı Kredi Teknoloji",
-    title: "Cloud & Middleware Engineer",
-    period: { tr: "Mar 2022 – Haz 2023", en: "Mar 2022 – Jun 2023" },
-    stack: "Pivotal PAS/PKS, WebSphere, Tomcat, Dynatrace, Git, Jira, Bamboo"
+    company: "Yapı Kredi Teknoloji",
+    title: "Cloud & Middleware Engineer",
+    period: { tr: "Mar 2022 – Haz 2023", en: "Mar 2022 – Jun 2023" },
+    stack: "Pivotal PAS/PKS, WebSphere, Tomcat, Dynatrace, Git, Jira, Bamboo",
   },
   {
     company: "TurkNet",
     title: "DevOps Engineer",
-    period: { tr: "Kas 2021 – Şub 2022", en: "Nov 2021 – Feb 2022" },
-    stack: "Azure DevOps, Nginx, New Relic, Grafana, ELK"
+    period: { tr: "Kas 2021 – Şub 2022", en: "Nov 2021 – Feb 2022" },
+    stack: "Azure DevOps, Nginx, New Relic, Grafana, ELK",
   },
   {
     company: "TEB",
     title: "Middleware Administrator",
-    period: { tr: "Ara 2020 – Kas 2021", en: "Dec 2020 – Nov 2021" },
-    stack: "Jboss EAP, WebSphere, WebLogic, IIS"
+    period: { tr: "Ara 2020 – Kas 2021", en: "Dec 2020 – Nov 2021" },
+    stack: "Jboss EAP, WebSphere, WebLogic, IIS",
   },
   {
     company: "Şekerbank",
     title: "Middleware Administrator",
-    period: { tr: "Ara 2018 – Ara 2020", en: "Dec 2018 – Dec 2020" },
-    stack: "NGINX, WebSphere, Jenkins, IIS"
+    period: { tr: "Ara 2018 – Ara 2020", en: "Dec 2018 – Dec 2020" },
+    stack: "NGINX, WebSphere, Jenkins, IIS",
   },
   {
     company: "TSK (Türk Silahlı Kuvvetleri)",
-    title: "Engineer Lieutenant – Academic Advisor",
-    period: { tr: "Ağu 2017 – Tem 2018", en: "Aug 2017 – Jul 2018" },
-    stack: "NGINX, WebSphere, Jenkins, IIS"
-  }
+    title: "Engineer Lieutenant – Academic Advisor",
+    period: { tr: "Ağu 2017 – Tem 2018", en: "Aug 2017 – Jul 2018" },
+    stack: "NGINX, WebSphere, Jenkins, IIS",
+  },
 ];
 
 const skills = [
@@ -91,23 +79,27 @@ const skills = [
   "Docker",
   "NGINX",
   "WebSphere",
-  "GitLab CI/CD",
+  "GitLab CI/CD",
   "Prometheus",
-  "ELK"
+  "ELK",
 ];
 
+/* --------------------------------------------------
+ * Ana bileşen
+ * -------------------------------------------------*/
 export default function App() {
   const [lang, setLang] = useState("tr");
   const navItems = translations.nav[lang];
 
   return (
     <main className="font-sans text-gray-800 dark:text-gray-100">
-      {/* NAVBAR */}
+      {/* ------------ NAVBAR ------------ */}
       <header className="fixed inset-x-0 top-0 z-50 h-16 bg-white/90 dark:bg-blue-900/80 backdrop-blur border-b border-blue-200/60 dark:border-blue-700/60">
         <nav className="mx-auto flex h-full max-w-6xl items-center justify-between px-6">
           <h1 className="text-xl font-extrabold text-blue-600 dark:text-blue-400">
-            Gönenç Özgan
+            Gönenç Özgan
           </h1>
+
           <ul className="hidden md:flex gap-6 text-sm font-medium">
             {navItems.map((id) => (
               <li key={id}>
@@ -120,6 +112,7 @@ export default function App() {
               </li>
             ))}
           </ul>
+
           <button
             onClick={() => setLang(lang === "tr" ? "en" : "tr")}
             className="text-sm text-blue-600 dark:text-blue-400"
@@ -129,7 +122,7 @@ export default function App() {
         </nav>
       </header>
 
-      {/* HERO */}
+      {/* ------------ HERO ------------ */}
       <section
         id={navItems[0]}
         className="relative flex min-h-screen flex-col items-center justify-center pt-16 text-center"
@@ -140,30 +133,36 @@ export default function App() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2 }}
         />
-        <motion.div
-          className="w-36 h-36 rounded-full bg-gradient-to-br from-blue-400 to-blue-500 shadow-xl mb-6 flex items-center justify-center text-white text-4xl font-bold"
+
+        {/* BÜYÜTÜLMÜŞ FOTO (320px / md 384px) */}
+        <motion.img
+          src="/profile.jpg"
+          alt="Gönenç Özgan"
+          loading="eager"
+          className="w-80 h-80 md:w-96 md:h-96 rounded-full shadow-2xl mb-8 object-cover object-center"
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.2 }}
-        >
-          GÖ
-        </motion.div>
+        />
+
         <motion.h2
-          className="text-4xl md:text-5xl font-bold mb-3 text-blue-600 dark:text-blue-400"
+          className="text-4xl md:text-5xl font-bold mb-4 text-blue-600 dark:text-blue-400"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
           {translations.heroTitle[lang]}
         </motion.h2>
+
         <motion.p
-          className="mx-auto max-w-xl mb-8 text-lg text-gray-700 dark:text-gray-300"
+          className="mx-auto max-w-xl mb-10 text-lg text-gray-700 dark:text-gray-300"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.6 }}
         >
           {translations.heroDesc[lang]}
         </motion.p>
+
         <motion.a
           href={`#${navItems[3]}`}
           className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full shadow-lg transition"
@@ -175,8 +174,11 @@ export default function App() {
         </motion.a>
       </section>
 
-      {/* ABOUT / HAKKIMDA */}
-      <section id={navItems[0]} className="py-20 bg-blue-50 dark:bg-blue-900/60">
+      {/* ------------ ABOUT ------------ */}
+      <section
+        id={navItems[0]}
+        className="py-20 bg-blue-50 dark:bg-blue-900/60"
+      >
         <div className="mx-auto max-w-4xl px-6 text-center">
           <h3 className="mb-6 text-3xl font-bold text-blue-600 dark:text-blue-400">
             {translations.aboutTitle[lang]}
@@ -187,7 +189,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* EXPERIENCE / DENEYIM */}
+      {/* ------------ EXPERIENCE ------------ */}
       <section
         id={navItems[1]}
         className="py-20 bg-white dark:bg-blue-800 border-y border-blue-200 dark:border-blue-700"
@@ -196,6 +198,7 @@ export default function App() {
           <h3 className="text-3xl font-bold text-center text-blue-600 dark:text-blue-400">
             {translations.expTitle[lang]}
           </h3>
+
           {experience.map((e, i) => (
             <motion.div
               key={e.company}
@@ -226,8 +229,11 @@ export default function App() {
         </div>
       </section>
 
-      {/* SKILLS / YETENEKLER */}
-      <section id={navItems[2]} className="py-20 bg-blue-50 dark:bg-blue-900/60">
+      {/* ------------ SKILLS ------------ */}
+      <section
+        id={navItems[2]}
+        className="py-20 bg-blue-50 dark:bg-blue-900/60"
+      >
         <div className="mx-auto max-w-4xl px-6 text-center">
           <h3 className="mb-6 text-3xl font-bold text-blue-600 dark:text-blue-400">
             {translations.skillsTitle[lang]}
@@ -249,7 +255,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* CONTACT / ILETISIM */}
+      {/* ------------ CONTACT ------------ */}
       <section
         id={navItems[3]}
         className="py-20 bg-white dark:bg-blue-800 border-t border-blue-200 dark:border-blue-700"
@@ -258,6 +264,7 @@ export default function App() {
           <h3 className="mb-6 text-3xl font-bold text-blue-600 dark:text-blue-400">
             {translations.contactTitle[lang]}
           </h3>
+
           <div className="grid md:grid-cols-2 gap-6">
             <a
               href="mailto:gonenc.ozgan@gmail.com"
@@ -268,9 +275,10 @@ export default function App() {
                 className="mx-auto text-blue-500 group-hover:text-blue-600"
               />
               <p className="mt-2 font-semibold text-blue-600 dark:text-blue-400">
-                gonencozgan@gmail.com
+                gonenc.ozgan@gmail.com
               </p>
             </a>
+
             <a
               href="https://www.linkedin.com/in/gönenç-özgan-37031078"
               target="_blank"
@@ -282,15 +290,16 @@ export default function App() {
                 className="mx-auto text-blue-500 group-hover:text-blue-600"
               />
               <p className="mt-2 font-semibold text-blue-600 dark:text-blue-400">
-                LinkedIn Profile
+                LinkedIn Profile
               </p>
             </a>
           </div>
         </div>
       </section>
 
+      {/* ------------ FOOTER ------------ */}
       <footer className="text-center py-8 text-sm text-gray-500 dark:text-gray-300 bg-blue-50 dark:bg-blue-900">
-        © {new Date().getFullYear()} Gönenç Özgan. Tüm hakları saklıdır.
+        © {new Date().getFullYear()} Gönenç Özgan. Tüm hakları saklıdır.
       </footer>
     </main>
   );
