@@ -136,7 +136,7 @@ export default function App() {
 
         {/* BÜYÜTÜLMÜŞ FOTO (320px / md 384px) */}
         <motion.img
-          src="/profile.jpg"
+          src="profile.jpg"
           alt="Gönenç Özgan"
           loading="eager"
           className="w-80 h-80 md:w-96 md:h-96 rounded-full shadow-2xl mb-8 object-cover object-center"
