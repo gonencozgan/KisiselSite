@@ -50,37 +50,37 @@ const experience = [
   {
     company: "Odeabank",
     title: "Expert Cloud & DevOps Engineer",
-    period: "Haz 2023 – Günümüz",
+    period: { tr: "Haz 2023 – Günümüz", en: "Jun 2023 – Present" },
     stack: "OpenShift, Anthos, Vanilla K8S, Docker, ELK, GitLab, Prometheus"
   },
   {
     company: "Yapı Kredi Teknoloji",
     title: "Cloud & Middleware Engineer",
-    period: "Mar 2022 – Haz 2023",
+    period: { tr: "Mar 2022 – Haz 2023", en: "Mar 2022 – Jun 2023" },
     stack: "Pivotal PAS/PKS, WebSphere, Tomcat, Dynatrace, Git, Jira, Bamboo"
   },
   {
     company: "TurkNet",
     title: "DevOps Engineer",
-    period: "Kas 2021 – Şub 2022",
+    period: { tr: "Kas 2021 – Şub 2022", en: "Nov 2021 – Feb 2022" },
     stack: "Azure DevOps, Nginx, New Relic, Grafana, ELK"
   },
   {
     company: "TEB",
     title: "Middleware Administrator",
-    period: "Ara 2020 – Kas 2021",
+    period: { tr: "Ara 2020 – Kas 2021", en: "Dec 2020 – Nov 2021" },
     stack: "Jboss EAP, WebSphere, WebLogic, IIS"
   },
   {
     company: "Şekerbank",
     title: "Middleware Administrator",
-    period: "Ara 2018 – Ara 2020",
+    period: { tr: "Ara 2018 – Ara 2020", en: "Dec 2018 – Dec 2020" },
     stack: "NGINX, WebSphere, Jenkins, IIS"
   },
   {
     company: "TSK (Türk Silahlı Kuvvetleri)",
     title: "Engineer Lieutenant – Academic Advisor",
-    period: "Ağu 2017 – Tem 2018",
+    period: { tr: "Ağu 2017 – Tem 2018", en: "Aug 2017 – Jul 2018" },
     stack: "NGINX, WebSphere, Jenkins, IIS"
   }
 ];
@@ -111,7 +111,10 @@ export default function App() {
           <ul className="hidden md:flex gap-6 text-sm font-medium">
             {navItems.map((id) => (
               <li key={id}>
-                <a href={`#${id}`} className="hover:text-blue-600 transition-colors">
+                <a
+                  href={`#${id}`}
+                  className="hover:text-blue-600 transition-colors"
+                >
                   {id.charAt(0).toUpperCase() + id.slice(1)}
                 </a>
               </li>
@@ -185,12 +188,15 @@ export default function App() {
       </section>
 
       {/* EXPERIENCE / DENEYIM */}
-      <section id={navItems[1]} className="py-20 bg-white dark:bg-blue-800 border-y border-blue-200 dark:border-blue-700">
+      <section
+        id={navItems[1]}
+        className="py-20 bg-white dark:bg-blue-800 border-y border-blue-200 dark:border-blue-700"
+      >
         <div className="mx-auto max-w-4xl px-6 space-y-6">
           <h3 className="text-3xl font-bold text-center text-blue-600 dark:text-blue-400">
             {translations.expTitle[lang]}
           </h3>
-          {experience.map((e,i) => (
+          {experience.map((e, i) => (
             <motion.div
               key={e.company}
               className="bg-blue-50 dark:bg-blue-900 rounded-lg shadow-lg overflow-hidden"
@@ -207,7 +213,7 @@ export default function App() {
                   <p className="text-blue-500">{e.title}</p>
                 </div>
                 <span className="text-sm text-gray-500 bg-blue-100 dark:bg-blue-700 px-2 py-1 rounded">
-                  {e.period}
+                  {e.period[lang]}
                 </span>
               </div>
               <div className="px-6 pb-6">
@@ -227,14 +233,14 @@ export default function App() {
             {translations.skillsTitle[lang]}
           </h3>
           <div className="flex flex-wrap justify-center gap-3 mt-4">
-            {skills.map((s,i) => (
+            {skills.map((s, i) => (
               <motion.span
                 key={s}
                 className="bg-gradient-to-r from-blue-500 to-blue-700 text-white px-4 py-2 rounded-full"
-                initial={{ scale:0.8, opacity:0 }}
-                whileInView={{ scale:1, opacity:1 }}
-                transition={{ delay:i*0.05 }}
-                viewport={{ once:true }}
+                initial={{ scale: 0.8, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                transition={{ delay: i * 0.05 }}
+                viewport={{ once: true }}
               >
                 {s}
               </motion.span>
@@ -244,19 +250,40 @@ export default function App() {
       </section>
 
       {/* CONTACT / ILETISIM */}
-      <section id={navItems[3]} className="py-20 bg-white dark:bg-blue-800 border-t border-blue-200 dark:border-blue-700">
-        <div className="mx-auto max-w-4xl px-6 text-center">
+      <section
+        id={navItems[3]}
+        className="py-20 bg-white dark:bg-blue-800 border-t border-blue-200 dark:border-blue-700"
+      >
+        <div className="mx-auto max-w-2xl px-6 text-center">
           <h3 className="mb-6 text-3xl font-bold text-blue-600 dark:text-blue-400">
             {translations.contactTitle[lang]}
           </h3>
-          <div className="grid md:grid-cols-2 gap-6 mx-auto max-w-2xl">
-            <a href="mailto:gonenc.ozgan@gmail.com" className="group p-6 bg-blue-100 dark:bg-blue-900 rounded-lg shadow hover:shadow-lg">
-              <Mail size={24} className="mx-auto text-blue-500 group-hover:text-blue-600" />
-              <p className="mt-2 font-semibold text-blue-600 dark:text-blue-400">gonencozgan@gmail.com</p>
+          <div className="grid md:grid-cols-2 gap-6">
+            <a
+              href="mailto:gonenc.ozgan@gmail.com"
+              className="group p-6 bg-blue-100 dark:bg-blue-900 rounded-lg shadow hover:shadow-lg"
+            >
+              <Mail
+                size={24}
+                className="mx-auto text-blue-500 group-hover:text-blue-600"
+              />
+              <p className="mt-2 font-semibold text-blue-600 dark:text-blue-400">
+                gonencozgan@gmail.com
+              </p>
             </a>
-            <a href="https://www.linkedin.com/in/gönenç-özgan-37031078" target="_blank" rel="noreferrer" className="group p-6 bg-blue-100 dark:bg-blue-900 rounded-lg shadow hover:shadow-lg">
-              <Linkedin size={24} className="mx-auto text-blue-500 group-hover:text-blue-600" />
-              <p className="mt-2 font-semibold text-blue-600 dark:text-blue-400">LinkedIn Profile</p>
+            <a
+              href="https://www.linkedin.com/in/gönenç-özgan-37031078"
+              target="_blank"
+              rel="noreferrer"
+              className="group p-6 bg-blue-100 dark:bg-blue-900 rounded-lg shadow hover:shadow-lg"
+            >
+              <Linkedin
+                size={24}
+                className="mx-auto text-blue-500 group-hover:text-blue-600"
+              />
+              <p className="mt-2 font-semibold text-blue-600 dark:text-blue-400">
+                LinkedIn Profile
+              </p>
             </a>
           </div>
         </div>
