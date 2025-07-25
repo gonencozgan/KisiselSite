@@ -124,13 +124,13 @@ export default function App() {
           <h3 className="mb-6 text-3xl font-bold text-blue-600 dark:text-blue-400">İletişim</h3>
           <p className="mb-8 text-gray-600 dark:text-gray-300">Birlikte çalışmak veya selam vermek için ulaşın.</p>
           <div className="flex flex-col md:flex-row justify-center gap-6">
-            <a href="tel:+905385694634" className="group p-6 bg-blue-100 dark:bg-blue-900 rounded-lg shadow hover:shadow-lg">
+            <a href="tel:" className="group p-6 bg-blue-100 dark:bg-blue-900 rounded-lg shadow hover:shadow-lg">
               <Phone size={24} className="mx-auto text-blue-500 group-hover:text-blue-600"/>
-              <p className="mt-2 font-semibold text-blue-600 dark:text-blue-400">+90 538 569 46 34</p>
+              <p className="mt-2 font-semibold text-blue-600 dark:text-blue-400"></p>
             </a>
             <a href="mailto:gonencozgan@gmail.com" className="group p-6 bg-blue-100 dark:bg-blue-900 rounded-lg shadow hover:shadow-lg">
               <Mail size={24} className="mx-auto text-blue-500 group-hover:text-blue-600"/>
-              <p className="mt-2 font-semibold text-blue-600 dark:text-blue-400">gonencozgan@gmail.com</p>
+              <p className="mt-2 font-semibold text-blue-600 dark:text-blue-400">gonenc.ozgan@gmail.com</p>
             </a>
             <a href="https://www.linkedin.com/in/gönenç-özgan-37031078" target="_blank" rel="noreferrer" className="group p-6 bg-blue-100 dark:bg-blue-900 rounded-lg shadow hover:shadow-lg">
               <Linkedin size={24} className="mx-auto text-blue-500 group-hover:text-blue-600"/>
