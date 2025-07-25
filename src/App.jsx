@@ -27,6 +27,18 @@ const experience = [
     period: "Ara 2020 – Kas 2021",
     stack: "Jboss EAP, WebSphere, WebLogic, IIS",
   },
+  {
+    company: "Şekerbank",
+    title: "Middleware Administrator",
+    period: "Ara 2018 – Ara 2020",
+    stack: "NGINX, WebSphere, Jenkins , IIS",
+  },
+  {
+    company: "TSK (Türk Silahlı Kuvvetleri)",
+    title: "Engineer Liuetenant - Academic Advisor",
+    period: "Ağu 2017 – Tem 2018",
+    stack: "NGINX, WebSphere, Jenkins , IIS",
+  },
 ];
 
 const skills = [
@@ -220,7 +232,7 @@ export default function App() {
                 size={24}
                 className="mx-auto text-amber-500 group-hover:text-amber-600"
               />
-              <p className="mt-2 font-semibold">gonencozgan@gmail.com</p>
+              <p className="mt-2 font-semibold">gonenc.ozgan@gmail.com</p>
             </a>
             <a
               href="https://www.linkedin.com/in/gönenç-özgan-37031078"
