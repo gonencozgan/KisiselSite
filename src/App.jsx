@@ -37,7 +37,7 @@ const translations = {
 const experience = [
   {
     company: "Odeabank",
-    title: "Expert Cloud & DevOps Engineer",
+    title: "Senior Expert Cloud & DevOps Engineer",
     period: { tr: "Haz 2023 – Günümüz", en: "Jun 2023 – Present" },
     stack: "OpenShift, Anthos, Vanilla K8S, Docker, ELK, GitLab, Prometheus",
   },
